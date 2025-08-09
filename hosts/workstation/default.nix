@@ -1,16 +1,21 @@
-# ~/nixos-config/modules/workstation/default.nix
 { config, pkgs, ... }:
 
 {
+  # Common configuration for all hosts
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  # System packages that should be on every machine
   environment.systemPackages = with pkgs; [
-    vim
     git
-    python3
-    nodejs
-    libreoffice
-    discord
-    teams
+    curl
+    wget
+    vim
+    htop
   ];
-  services.xserver.enable = true;
-}
 
+  # Basic services
+  services.openssh.enable = true;
+  
+  # User configuration
+  imports = [ ../users/abbes.nix ];
+}
