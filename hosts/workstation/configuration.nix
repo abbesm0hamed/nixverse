@@ -22,13 +22,9 @@
   # Enable XWayland for compatibility
   programs.xwayland.enable = true;
 
-  # User configuration
-  users.users.abbes = {
-    isNormalUser = true;
-    description = "Abbes";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.fish;
-  };
+  # User is configured in common.nix (imports users/abbes.nix)
+  # Add docker group to existing user
+  users.users.abbes.extraGroups = [ "docker" ];
 
   # Additional services for workstation
   virtualisation.docker.enable = true;
