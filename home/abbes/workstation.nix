@@ -33,11 +33,6 @@
     };
   };
 
-  # Basic shell configuration
-  programs.fish = {
-    enable = true;
-  };
-
   # Basic terminal
   programs.kitty = {
     enable = true;

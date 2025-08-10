@@ -18,6 +18,7 @@
   programs.niri.enable = true;
 
   # Fish is configured in home-manager
+  programs.fish.enable = true;
   
   # Enable XWayland for compatibility
   programs.xwayland.enable = true;
