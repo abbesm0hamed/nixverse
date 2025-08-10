@@ -58,9 +58,6 @@
     vlc
     gimp
     
-    # File management
-    thunar
-    
     # Fonts (Nerd Fonts)
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
     
