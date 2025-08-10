@@ -59,7 +59,7 @@
     gimp
     
     # Fonts (Nerd Fonts)
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    # (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     
     # Other utilities
     firefox
