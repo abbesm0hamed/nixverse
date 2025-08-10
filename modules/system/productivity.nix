@@ -3,36 +3,40 @@
 with lib;
 
 {
-  options.modules.system.devtools = {
-    enable = mkEnableOption "development tools";
+  options.modules.system.productivity = {
+    enable = mkEnableOption "productivity applications";
   };
 
-  config = mkIf config.modules.system.devtools.enable {
+  config = mkIf config.modules.system.productivity.enable {
     environment.systemPackages = with pkgs; [
-      # Editors
-      neovim
+      # Office and productivity
+      libreoffice
+      obsidian
       
-      # Version control
-      git
-      lazygit
+      # Communication
+      discord
+      telegram-desktop
       
-      # Languages
-      nodejs
-      python3
-      rustc
-      cargo
+      # Media and creativity
+      spotify
+      audacity
+      blender
+      inkscape
       
-      # Tools
-      kitty
-      tmux
-      ripgrep
-      fd
-      bat
-      eza
+      # Browsers
+      firefox
+      chromium
       
-      # Build tools
-      gcc
-      gnumake
+      # File sharing and cloud
+      syncthing
+      
+      # System monitoring
+      htop
+      btop
+      
+      # Archive tools
+      p7zip
+      unrar
     ];
   };
 }

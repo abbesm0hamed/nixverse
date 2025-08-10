@@ -8,14 +8,15 @@ with lib;
   };
 
   config = mkIf config.modules.system.desktop.enable {
-    # Wayland/Sway
-    programs.sway.enable = true;
+    # Niri and Wayland
+    programs.niri.enable = true;
     programs.waybar.enable = true;
     
     # XDG Desktop Portal
     xdg.portal = {
       enable = true;
       wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
     # Display manager
@@ -23,12 +24,46 @@ with lib;
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.sway}/bin/sway";
+          command = "niri-session";
           user = "abbes";
         };
         default_session = initial_session;
       };
     };
+
+    # Desktop applications from Arch setup
+    environment.systemPackages = with pkgs; [
+      # Wayland utilities
+      waybar
+      wofi
+      mako
+      swww
+      grim
+      slurp
+      wl-clipboard
+      
+      # Media
+      mpv
+      vlc
+      gimp
+      
+      # System utilities
+      btop
+      cava
+      ranger
+      
+      # Terminal and shell
+      kitty
+      fish
+      starship
+      
+      # File management
+      thunar
+      
+      # Other utilities
+      fastfetch
+      pavucontrol
+    ];
 
     # Fonts
     fonts.packages = with pkgs; [
