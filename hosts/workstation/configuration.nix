@@ -23,11 +23,16 @@
   # Enable XWayland for compatibility
   programs.xwayland.enable = true;
 
+  # User configuration
+  users.users.abbes = {
+    isNormalUser = true;
+    description = "Abbes";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    shell = pkgs.fish;
+  };
+
   # Additional services for workstation
   virtualisation.docker.enable = true;
-  
-  # Add user to docker group
-  users.users.abbes.extraGroups = [ "docker" ];
 
   # System settings
   system.stateVersion = "25.05";
