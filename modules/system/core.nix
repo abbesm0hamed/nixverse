@@ -8,9 +8,14 @@ with lib;
   };
 
   config = mkIf config.modules.system.core.enable {
-    # Boot configuration
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    # Boot configuration - flexible for VMs and different setups
+    boot.loader.grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+    };
+    boot.loader.efi.canTouchEfiVariables = false;
 
     # Networking
     networking.networkmanager.enable = true;
