@@ -73,7 +73,7 @@ with lib;
       liberation_ttf
       fira-code
       fira-code-symbols
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     ];
   };
 }
