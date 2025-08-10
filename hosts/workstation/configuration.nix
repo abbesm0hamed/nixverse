@@ -16,6 +16,9 @@
 
   # Niri configuration
   programs.niri.enable = true;
+
+  # fish configuration
+  programs.fish.enable = true;
   
   # Enable XWayland for compatibility
   programs.xwayland.enable = true;
