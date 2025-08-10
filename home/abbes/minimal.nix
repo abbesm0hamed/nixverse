@@ -8,7 +8,7 @@
 
   # This value determines the Home Manager release that your
   # configuration is compatible with.
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 
   # Minimal packages for quick access
   home.packages = with pkgs; [
