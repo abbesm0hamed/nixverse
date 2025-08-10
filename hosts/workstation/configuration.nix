@@ -21,14 +21,13 @@
   programs.xwayland.enable = true;
 
   # Additional services for workstation
-  services.docker.enable = true;
   virtualisation.docker.enable = true;
   
   # Add user to docker group
   users.users.abbes.extraGroups = [ "docker" ];
 
   # System settings
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   networking.hostName = "workstation";
 
   # Enable flakes
