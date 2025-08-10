@@ -38,14 +38,14 @@ with lib;
       wofi
       mako
       swww
-      grim
-      slurp
-      wl-clipboard
+      # grim
+      # slurp
+      # wl-clipboard
       
       # Media
-      mpv
-      vlc
-      gimp
+      # mpv
+      # vlc
+      # gimp
       
       # System utilities
       btop
@@ -58,7 +58,7 @@ with lib;
       starship
       
       # File management
-      thunar
+      # thunar
       
       # Other utilities
       fastfetch

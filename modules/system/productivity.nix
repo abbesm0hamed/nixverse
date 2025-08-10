@@ -10,25 +10,25 @@ with lib;
   config = mkIf config.modules.system.productivity.enable {
     environment.systemPackages = with pkgs; [
       # Office and productivity
-      libreoffice
-      obsidian
+      # libreoffice
+      # obsidian
       
       # Communication
-      discord
-      telegram-desktop
+      # discord
+      # telegram-desktop
       
       # Media and creativity
-      spotify
-      audacity
-      blender
-      inkscape
+      # spotify
+      # audacity
+      # blender
+      # inkscape
       
       # Browsers
-      firefox
+      # firefox
       chromium
       
       # File sharing and cloud
-      syncthing
+      # syncthing
       
       # System monitoring
       htop

@@ -11,7 +11,7 @@
   modules.system.devtools.enable = true;
 
   # Minimal system settings
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   networking.hostName = "minimal";
 }
 
