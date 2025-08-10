@@ -8,11 +8,11 @@
     ../../modules/system/productivity.nix
   ];
 
-  # Enable all modules for workstation
+  # Enable essential modules for workstation
   modules.system.core.enable = true;
   modules.system.desktop.enable = true;
   modules.system.devtools.enable = true;
-  modules.system.productivity.enable = true;
+  # modules.system.productivity.enable = true;  # Disabled for now
 
   # Niri configuration
   programs.niri.enable = true;

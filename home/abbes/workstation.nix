@@ -19,53 +19,7 @@
     docker-compose
     nodejs
     python3
-    rustc
-    cargo
-    gcc
-    gnumake
-    
-    # Terminal utilities
-    kitty
-    tmux
-    fish
-    starship
-    ranger
-    btop
-    htop
-    cava
-    fastfetch
-    ripgrep
-    fd
-    bat
-    eza
-    tree
-    unzip
-    curl
-    wget
-    
-    # Wayland/Desktop utilities
-    waybar
-    wofi
-    mako
-    swww
-    grim
-    slurp
-    wl-clipboard
-    pavucontrol
-    
-    # Media applications
-    mpv
-    vlc
-    gimp
-    
-    # Fonts (Nerd Fonts)
-    # (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-    
-    # Other utilities
     firefox
-    discord
-    spotify
-    obsidian
   ];
 
   # Git configuration
@@ -79,88 +33,14 @@
     };
   };
 
-  # Fish shell with starship prompt
+  # Basic shell configuration
   programs.fish = {
     enable = true;
-    shellAliases = {
-      ll = "eza -l --icons";
-      la = "eza -la --icons";
-      ls = "eza --icons";
-      cat = "bat";
-      grep = "rg";
-      find = "fd";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      vim = "nvim";
-      vi = "nvim";
-    };
-    shellInit = ''
-      # Set up starship prompt
-      starship init fish | source
-    '';
   };
 
-  # Starship prompt configuration
-  programs.starship = {
-    enable = true;
-    settings = {
-      format = "$all$character";
-      character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
-      };
-    };
-  };
-
-  # Kitty terminal configuration
+  # Basic terminal
   programs.kitty = {
     enable = true;
-    settings = {
-      # Kanagawa color scheme
-      background = "#1F1F28";
-      foreground = "#DCD7BA";
-      cursor = "#C8C093";
-      
-      # Font configuration
-      font_family = "JetBrainsMono Nerd Font";
-      font_size = 12;
-      
-      # Window settings
-      window_padding_width = 10;
-      confirm_os_window_close = 0;
-    };
-  };
-
-  # Tmux configuration
-  programs.tmux = {
-    enable = true;
-    terminal = "screen-256color";
-    shortcut = "a";
-    keyMode = "vi";
-    extraConfig = ''
-      # Kanagawa colors for tmux
-      set -g status-bg "#2A2A37"
-      set -g status-fg "#DCD7BA"
-      set -g window-status-current-bg "#7E9CD8"
-      set -g window-status-current-fg "#1F1F28"
-      
-      # Enable mouse support
-      set -g mouse on
-      
-      # Split panes using | and -
-      bind | split-window -h
-      bind - split-window -v
-      unbind '"'
-      unbind %
-    '';
-  };
-
-  # Neovim configuration (basic setup)
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   # Let Home Manager install and manage itself.
