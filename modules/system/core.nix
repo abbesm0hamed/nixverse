@@ -8,14 +8,9 @@ with lib;
   };
 
   config = mkIf config.modules.system.core.enable {
-    # Boot configuration - flexible for VMs and different setups
-    boot.loader.grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-    };
-    boot.loader.efi.canTouchEfiVariables = false;
+    # Boot configuration - simple GRUB for VM
+    boot.loader.grub.enable = true;
+    boot.loader.grub.device = "/dev/sda";
 
     # Networking
     networking.networkmanager.enable = true;
