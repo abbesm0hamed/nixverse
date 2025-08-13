@@ -14,14 +14,10 @@
   modules.system.devtools.enable = true;
   # modules.system.productivity.enable = true;  # Disabled for now
 
-  # Niri configuration
-  programs.niri.enable = true;
-
-  # Fish is configured in home-manager
-  programs.fish.enable = true;
+  # Desktop environment configured in desktop.nix (GNOME for VM compatibility)
   
-  # Enable XWayland for compatibility
-  programs.xwayland.enable = true;
+  # Fish shell
+  programs.fish.enable = true;
 
   # User is configured in common.nix (imports users/abbes.nix)
   # Add docker group to existing user

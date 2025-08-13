@@ -8,30 +8,59 @@ with lib;
   };
 
   config = mkIf config.modules.system.desktop.enable {
-    # Niri and Wayland
+    # NIRI Wayland Compositor Configuration
     programs.niri.enable = true;
-    programs.waybar.enable = true;
     
-    # XDG Desktop Portal
+    # Display manager for NIRI
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    
+    # Set NIRI as default session
+    services.displayManager.defaultSession = "niri";
+    
+    # Essential Wayland services
+    security.polkit.enable = true;
+    services.dbus.enable = true;
+    
+    # XDG Desktop Portal for Wayland
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+      ];
+    };
+    
+    # Audio support
+    security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
     };
 
-    # Display manager - SDDM
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
-    
-    # Auto-login configuration
-    services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = "abbes";
-
-    # Essential desktop packages only
+    # Essential desktop packages
     environment.systemPackages = with pkgs; [
-      # Essential Wayland utilities
-      waybar
-      kitty  # Terminal
+      # Terminal and basic tools
+      kitty
+      firefox
+      git
+      neovim
+      
+      # Wayland utilities
+      wl-clipboard
+      grim
+      slurp
+      swappy
+      
+      # System utilities
+      brightnessctl
+      playerctl
+      pavucontrol
     ];
 
     # Basic fonts
