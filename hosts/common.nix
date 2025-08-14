@@ -7,6 +7,7 @@
   # System packages that should be on every machine
   environment.systemPackages = with pkgs; [
     git
+    gnumake
     curl
     wget
     vim
