@@ -134,9 +134,6 @@
   
   # Also link root dotfiles
   home.file.".tmux.conf".source = ../dotfiles/.tmux.conf;
-  home.file.".zshrc".source = ../dotfiles/.zshrc;
-  home.file.".p10k.zsh".source = ../dotfiles/.p10k.zsh;
-  home.file.".gitmux.conf".source = ../dotfiles/.gitmux.conf;
 
   
   # Create screenshots directory
