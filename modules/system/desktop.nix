@@ -90,10 +90,6 @@ with lib;
 
       # File manager and services
       xfce.thunar
-      thunar-archive-plugin
-      file-roller
-      tumbler
-      ffmpegthumbnailer
     ];
 
     # Basic fonts
