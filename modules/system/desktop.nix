@@ -66,6 +66,9 @@ with lib;
 
     # Essential desktop packages
     environment.systemPackages = with pkgs; [
+      # Compositor
+      niri
+
       # Terminal and basic tools
       kitty
       ghostty
