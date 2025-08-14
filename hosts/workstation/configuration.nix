@@ -25,7 +25,7 @@
 
   # VM guest integrations for better clipboard, resolution changes, and time sync
   services.qemuGuest.enable = true;
-  services.spice-vdagent.enable = true;
+  services.spice-vdagentd.enable = true;
 
   # System settings
   system.stateVersion = "25.05";
