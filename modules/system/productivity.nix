@@ -10,7 +10,7 @@ with lib;
   config = mkIf config.modules.system.productivity.enable {
     environment.systemPackages = with pkgs; [
       # Minimal productivity tools
-      firefox
+      libreoffice;
     ];
   };
 }

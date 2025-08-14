@@ -3,10 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    niri.url = "github:sodiboo/niri-flake";
-    niri.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, home-manager, niri, ... }:
@@ -20,12 +25,12 @@
           inherit system;
           modules = [
             ./hosts/minimal/configuration.nix
-            ./hosts/minimal/hardware-configuration.nix
+            /etc/nixos/hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.abbes = import ./home/abbes/minimal.nix;
+              home-manager.users.abbes = import ./home/minimal.nix;
             }
           ];
         };
@@ -34,13 +39,13 @@
           inherit system;
           modules = [
             ./hosts/workstation/configuration.nix
-            ./hosts/workstation/hardware-configuration.nix
+            /etc/nixos/hardware-configuration.nix
             niri.nixosModules.niri
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.abbes = import ./home/abbes/workstation.nix;
+              home-manager.users.abbes = import ./home/workstation.nix;
               home-manager.extraSpecialArgs = { inherit niri; };
             }
           ];

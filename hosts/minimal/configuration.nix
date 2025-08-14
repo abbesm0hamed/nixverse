@@ -10,6 +10,9 @@
   modules.system.core.enable = true;
   modules.system.devtools.enable = true;
 
+  # VM guest integrations
+  services.qemuGuest.enable = true;
+
   # Minimal system settings
   system.stateVersion = "25.05";
   networking.hostName = "minimal";

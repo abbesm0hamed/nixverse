@@ -8,5 +8,6 @@
     shell = pkgs.fish;
   };
   
-  programs.zsh.enable = true;
+  # Enable fish shell system-wide
+  programs.fish.enable = true;
 }

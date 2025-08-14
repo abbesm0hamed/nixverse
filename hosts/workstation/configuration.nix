@@ -16,9 +16,6 @@
 
   # Desktop environment configured in desktop.nix (GNOME for VM compatibility)
   
-  # Fish shell
-  programs.fish.enable = true;
-
   # User is configured in common.nix (imports users/abbes.nix)
   # Add docker group to existing user
   users.users.abbes.extraGroups = [ "docker" ];
@@ -26,10 +23,11 @@
   # Additional services for workstation
   virtualisation.docker.enable = true;
 
+  # VM guest integrations for better clipboard, resolution changes, and time sync
+  services.qemuGuest.enable = true;
+  services.spice-vdagent.enable = true;
+
   # System settings
   system.stateVersion = "25.05";
   networking.hostName = "workstation";
-
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
