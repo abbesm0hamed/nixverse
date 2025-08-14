@@ -49,9 +49,6 @@
     playerctl
     brightnessctl
     
-    # File management
-    thunar
-    
     # Additional utilities
     curl
     wget

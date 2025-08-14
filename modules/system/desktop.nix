@@ -89,7 +89,7 @@ with lib;
       pulseaudio
 
       # File manager and services
-      thunar
+      xfce.thunar
       thunar-archive-plugin
       file-roller
       tumbler
