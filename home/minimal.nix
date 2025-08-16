@@ -1,54 +1,37 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, dotfiles, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "abbes";
-  home.homeDirectory = "/home/abbes";
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with.
-  home.stateVersion = "25.05";
-
-  # Minimal packages for quick access
-  home.packages = with pkgs; [
-    # Essential tools
-    git
-    curl
-    wget
-    unzip
-    tree
-    
-    # Terminal utilities
-    htop
-    btop
-    neofetch
-    
-    # Text editors
-    neovim
-    
-    # Shell
-    fish
+  imports = [
+    ./common
   ];
 
-  # Basic git configuration
-  programs.git = {
-    enable = true;
-    userName = "abbes";
-    userEmail = "your-email@example.com"; # Update this
+  home = {
+    username = "abbes";
+    homeDirectory = "/home/abbes";
+    stateVersion = "25.05";
   };
 
-  # Fish shell configuration
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      la = "ls -la";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-    };
+  # Minimal set of dotfiles
+  home.file = {
+    ".vimrc".source = "${dotfiles}/vim/.vimrc";
+    ".tmux.conf".source = "${dotfiles}/tmux/.tmux.conf";
+    ".gitconfig".source = "${dotfiles}/git/.gitconfig";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # Essential programs only
+  home.packages = with pkgs; [
+    # Terminal tools
+    tmux
+    vim
+    
+    # Basic utilities
+    tree
+    htop
+    curl
+    wget
+  ];
+  
+  # Basic shell setup
+  programs.bash.enable = true;
+  programs.git.enable = true;
 }

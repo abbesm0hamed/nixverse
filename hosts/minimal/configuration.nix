@@ -1,20 +1,38 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
 {
-  imports = [
-    ../common.nix
-    ../../modules/system/core.nix
-    ../../modules/system/devtools.nix
+  # System hostname
+  networking.hostName = "nixos-minimal";
+  
+  # Minimal package set
+  environment.systemPackages = with pkgs; [
+    # Essential tools only
+    vim
+    wget
+    curl
+    git
+    htop
+    tree
+    tmux
+    
+    # Text editors
+    nano
+    
+    # Network tools
+    networkmanager-openvpn
   ];
-
-  # Enable modules for minimal setup
-  modules.system.core.enable = true;
-  modules.system.devtools.enable = true;
-
-  # VM guest integrations
-  services.qemuGuest.enable = true;
-
-  # Minimal system settings
-  system.stateVersion = "25.05";
-  networking.hostName = "minimal";
+  
+  # Disable unnecessary services
+  services.printing.enable = false;
+  hardware.bluetooth.enable = false;
+  
+  # Enable only essential services
+  services.timesyncd.enable = true;
+  
+  # Minimal desktop (optional)
+  services.xserver = {
+    enable = true;
+    displayManager.lightdm.enable = true;
+    desktopManager.xfce.enable = true;
+  };
 }
-

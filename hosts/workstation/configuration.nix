@@ -1,33 +1,58 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, niri, ... }:
+
 {
   imports = [
-    ../common.nix
-    ../../modules/system/core.nix
-    ../../modules/system/desktop.nix
-    ../../modules/system/devtools.nix
-    ../../modules/system/productivity.nix
+    ../../modules/desktop/niri.nix
+    ../../modules/development
+    ../../modules/services/docker.nix
   ];
 
-  # Enable essential modules for workstation
-  modules.system.core.enable = true;
-  modules.system.desktop.enable = true;
-  modules.system.devtools.enable = true;
-  # modules.system.productivity.enable = true;  # Disabled for now
+  # Desktop environment
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+  };
 
-  # Desktop environment configured in desktop.nix (GNOME for VM compatibility)
+  # Niri window manager
+  programs.niri.enable = true;
   
-  # User is configured in common.nix (imports users/abbes.nix)
-  # Add docker group to existing user
-  users.users.abbes.extraGroups = [ "docker" ];
+  # Additional workstation packages
+  environment.systemPackages = with pkgs; [
+    # Development tools
+    vscode
+    docker-compose
+    nodejs
+    python3
+    
+    # Desktop applications
+    firefox
+    thunderbird
+    gimp
+    libreoffice
+    
+    # Media
+    vlc
+    spotify
+    
+    # System tools
+    gparted
+    wireshark
+    
+    # Your custom packages
+    zen-browser
+  ];
 
-  # Additional services for workstation
+  # Enable Docker
   virtualisation.docker.enable = true;
-
-  # VM guest integrations for better clipboard, resolution changes, and time sync
-  services.qemuGuest.enable = true;
-  services.spice-vdagentd.enable = true;
-
-  # System settings
-  system.stateVersion = "25.05";
-  networking.hostName = "workstation";
+  
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  
+  # Printing
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 }
